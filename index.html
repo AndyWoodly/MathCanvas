@@ -10,18 +10,58 @@
     <link rel="stylesheet" href="main.css"/>
 
     <script type="text/javascript">
+    
+        function init() {
+            var canvas = document.getElementById('canvas');
+            canvas.width = document.width;
+            canvas.height = document.height;
+            var ctx = canvas.getContext('2d');
+            var width = canvas.width-10;
+            var height = canvas.height-10;
+            var centerX = width/2;
+            var centerY = height/2;
+            draw(ctx, centerX, centerY, 2, 1000);
+        }
+        
+        function draw(ctx, cx, cy, sf, N) {
+            var x = cx;
+            var y = cy;
+            var x1;
+            var y1;
+            var xn;
+            for(var i = 0; i < N; i++) {
+                xn = sequence(i);
+                //console.log(xn);
+                var xIn = 2 * Math.PI * xn;
+                //console.log(xIn);
+                x1 = x + sf * Math.cos(xIn);
+                y1 = y + sf * Math.sin(xIn);
+                //console.log(x,y,x1,y1);
 
+                ctx.beginPath();
+                ctx.moveTo(x,y);
+                ctx.lineTo(x1,y1);
+                //ctx.closePath();
+                ctx.stroke();
+                x = x1;
+                y = y1;
+            }
+        }
+        
+        function sequence(n) {
+            //return Math.pow(Math.log(n),4)
+            //return Math.pow(n,7)/1050;
+            return Math.sin(Math.sqrt(n));
+        }
+        
     </script>
 </head>
 
-<body onload='update()'>
+<body onload='init()'>
 
-<div id="shield">
-    <div id='shield_content'>
-        <div id='shield_img'>
-            <!--img src="images/loading.gif"/-->
-        </div>
-        <div id='shield_text'>Implement me ...</div>
+<div id="main">
+    <div id="canvas_div">
+        <canvas id="canvas"></canvas>
     </div>
 </div>
 
