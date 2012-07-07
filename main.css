@@ -1,0 +1,47 @@
+html {
+    height: 100%;
+	width: 100%;
+}
+
+body {
+    top: 0;
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	width: 100%;
+	font-family: Helevetica, sans-serif;
+}
+
+/* shield */
+
+#shield {
+  position: absolute;
+  top: 50%;
+  left: 0px;
+  width: 100%;
+  height: 1px;
+  overflow: visible;
+  z-index: 3;
+  opacity: 1;
+  visibility: 'visible';
+}
+
+#shield_content {
+  width: 150px;
+  height: 80px;
+  margin-left: -75px;  /***  width / 2   ***/
+  position: absolute;
+  top: -40px;          /***  height / 2   ***/
+  left: 50%;
+}
+
+#shield_img {
+    text-align: center;
+}
+
+#shield_text {
+    text-align: center;
+    color: #7a7a7a;
+}
+
+
