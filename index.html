@@ -20,7 +20,45 @@
             var height = canvas.height-10;
             var centerX = width/2;
             var centerY = height/2;
-            draw(ctx, centerX, centerY, 2, 1000);
+            var prevX = -1;
+            var prevY = -1;
+
+            var dragok = false;
+            
+            function clear() {
+                ctx.clearRect(0, 0, canvas.width, canvas.height);
+            }
+            
+            function myMove(e) {
+                if (dragok) {
+                    var x = e.pageX;
+                    var y = e.pageY;
+                    centerX += x - prevX;
+                    centerY += y - prevY;
+                    clear();
+                    draw(ctx, centerX, centerY, 3, 3000);
+                    prevY = y;
+                    prevX = x;
+                }
+            }
+            
+            function myDown(e) {
+                prevX = e.pageX;
+                prevY = e.pageY;
+                dragok = true;
+                canvas.onmousemove = myMove;
+            }
+            
+            function myUp() {
+                console.log("up");
+                dragok = false;
+                canvas.onmousemove = null;
+            }
+            
+            canvas.onmousedown = myDown;
+            canvas.onmouseup = myUp;
+            
+            draw(ctx, centerX, centerY, 3, 3000);
         }
         
         function draw(ctx, cx, cy, sf, N) {
