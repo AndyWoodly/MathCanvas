@@ -16,12 +16,12 @@
             canvas.width = document.width;
             canvas.height = document.height;
             var ctx = canvas.getContext('2d');
-            var width = canvas.width-10;
-            var height = canvas.height-10;
-            var centerX = width/2;
-            var centerY = height/2;
+            var centerX = canvas.width/2;
+            var centerY = canvas.height/2;
             var prevX = -1;
             var prevY = -1;
+            var scaleFactor = 3;
+            var nrOfIterations = 3000;
 
             var dragok = false;
             
@@ -36,7 +36,7 @@
                     centerX += x - prevX;
                     centerY += y - prevY;
                     clear();
-                    draw(ctx, centerX, centerY, 3, 3000);
+                    draw(ctx, centerX, centerY, scaleFactor, nrOfIterations);
                     prevY = y;
                     prevX = x;
                 }
@@ -58,7 +58,7 @@
             canvas.onmousedown = myDown;
             canvas.onmouseup = myUp;
             
-            draw(ctx, centerX, centerY, 3, 3000);
+            draw(ctx, centerX, centerY, scaleFactor, nrOfIterations);
         }
         
         function draw(ctx, cx, cy, sf, N) {
@@ -88,7 +88,7 @@
         
         function sequence(n) {
             //return Math.pow(Math.log(n),4)
-            //return Math.pow(n,7)/1050;
+            //return Math.pow(n,2)/1234;
             return Math.sin(Math.sqrt(n));
         }
         
@@ -100,6 +100,9 @@
 <div id="main">
     <div id="canvas_div">
         <canvas id="canvas"></canvas>
+    </div>
+    <div id="controls">
+
     </div>
 </div>
 
