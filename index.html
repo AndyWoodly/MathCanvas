@@ -21,7 +21,7 @@
             var prevX = -1;
             var prevY = -1;
             var scaleFactor = 3;
-            var nrOfIterations = 3000;
+            var nrOfIterations = 30000;
 
             var dragok = false;
             
@@ -58,7 +58,7 @@
             canvas.onmousedown = myDown;
             canvas.onmouseup = myUp;
             
-            draw(ctx, centerX, centerY, scaleFactor, nrOfIterations);
+            draw(ctx, 10, centerY, scaleFactor, nrOfIterations);
         }
         
         function draw(ctx, cx, cy, sf, N) {
@@ -87,6 +87,7 @@
         }
         
         function sequence(n) {
+            //return Math.pow(n,2)/7;
             //return Math.pow(Math.log(n),4)
             //return Math.pow(n,2)/1234;
             return Math.sin(Math.sqrt(n));
