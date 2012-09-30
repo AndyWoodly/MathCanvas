@@ -8,101 +8,33 @@
     <meta http-equiv="Content-Type" content="text/html;charset=utf-8"/>
 
     <link rel="stylesheet" href="main.css"/>
+    <script type="text/javascript" src="app.js"></script>
 
-    <script type="text/javascript">
-    
-        function init() {
-            var canvas = document.getElementById('canvas');
-            canvas.width = document.width;
-            canvas.height = document.height;
-            var ctx = canvas.getContext('2d');
-            var centerX = canvas.width/2;
-            var centerY = canvas.height/2;
-            var prevX = -1;
-            var prevY = -1;
-            var scaleFactor = 3;
-            var nrOfIterations = 3000;
-
-            var dragok = false;
-            
-            function clear() {
-                ctx.clearRect(0, 0, canvas.width, canvas.height);
-            }
-            
-            function myMove(e) {
-                if (dragok) {
-                    var x = e.pageX;
-                    var y = e.pageY;
-                    centerX += x - prevX;
-                    centerY += y - prevY;
-                    clear();
-                    draw(ctx, centerX, centerY, scaleFactor, nrOfIterations);
-                    prevY = y;
-                    prevX = x;
-                }
-            }
-            
-            function myDown(e) {
-                prevX = e.pageX;
-                prevY = e.pageY;
-                dragok = true;
-                canvas.onmousemove = myMove;
-            }
-            
-            function myUp() {
-                console.log("up");
-                dragok = false;
-                canvas.onmousemove = null;
-            }
-            
-            canvas.onmousedown = myDown;
-            canvas.onmouseup = myUp;
-            
-            draw(ctx, centerX, centerY, scaleFactor, nrOfIterations);
-        }
-        
-        function draw(ctx, cx, cy, sf, N) {
-            var x = cx;
-            var y = cy;
-            var x1;
-            var y1;
-            var xn;
-            for(var i = 0; i < N; i++) {
-                xn = sequence(i);
-                //console.log(xn);
-                var xIn = 2 * Math.PI * xn;
-                //console.log(xIn);
-                x1 = x + sf * Math.cos(xIn);
-                y1 = y + sf * Math.sin(xIn);
-                //console.log(x,y,x1,y1);
-
-                ctx.beginPath();
-                ctx.moveTo(x,y);
-                ctx.lineTo(x1,y1);
-                //ctx.closePath();
-                ctx.stroke();
-                x = x1;
-                y = y1;
-            }
-        }
-        
-        function sequence(n) {
-            //return Math.pow(Math.log(n),4)
-            //return Math.pow(n,2)/1234;
-            return Math.sin(Math.sqrt(n));
-        }
-        
-    </script>
 </head>
 
-<body onload='init()'>
+<body onload='MathCanvas.init("canvas_div", "canvas", "flap", 100)'>
+<!--<body>-->
 
-<div id="main">
+<div id="main" class="layer">
     <div id="canvas_div">
         <canvas id="canvas"></canvas>
     </div>
-    <div id="controls">
-
+</div>
+<div id="overlay" class="layer">
+    <div id="controls_panel">
+        <select id="sequence_select" name="sequence">
+            <option>eins</option>
+            <option>zwei</option>
+            <option>drei</option>
+            <option>vier</option>
+            <option>fuenf</option>
+        </select>
+        <!--<div id="dropdown">dropdown</div>-->
+        <!--<div id="new">new</div>-->
+        <input id="new_button" type="button" value="New"/>
+    </div>
+    <div id="flap_panel">
+        <div id="flap">options</div>
     </div>
 </div>
 

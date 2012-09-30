@@ -1,24 +1,105 @@
-html {
+* {
+    font-family: Arial,serif;
+    font-size: 22px;
+}
+
+html, body, .layer {
+    position: absolute;
+
     height: 100%;
 	width: 100%;
+
+    margin:0;
+    padding:0;
+    border: 0;
 }
 
-body {
-    top: 0;
-	margin: 0;
-	padding: 0;
-	height: 100%;
-	width: 100%;
-	font-family: Helevetica, sans-serif;
-}
+/* main */
 
 #main {
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+
+    background-color: #d4d4d4;
+    z-index: 0;
     height: 100%;
     width: 100%;
 }
 
 #canvas_div {
-    margin: 10px;
-    height: 100%;
-    width: 100%;
+    -webkit-box-flex: 1;
+    background-color: white;
+    margin: 5%;
+    border: solid #cdcdcd 1px;
+    -webkit-box-shadow: 4px 4px 4px #666;
+}
+
+#canvas {
+}
+
+/* controls overlay */
+
+#overlay {
+    z-index: 1;
+    top: -100px;
+    -webkit-transition: top 0.5s ease-in;
+
+    margin-left: 1%;
+    margin-right: 1%;
+    width: 98%;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+
+#controls_panel {
+    height: 100px;
+    /*border: solid #cdcdcd 1px;*/
+    background-color: white;
+    -webkit-box-shadow: 8px 8px 8px #666;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+
+    background: -webkit-gradient(linear, left bottom, left top, from(#6bb2ff), to(rgba(202, 231, 255, 0.99)));
+
+}
+
+#new_button {
+    height: 20px;
+    -webkit-box-pack: right;
+    -webkit-box-align: right;
+}
+
+#sequence_select {
+    height: 20px;
+
+    -webkit-box-flex: 1;
+    -webkit-box-pack: center;
+    -webkit-box-align: stretch;
+}
+
+#flap_panel {
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+}
+
+#flap {
+    margin-left: 85%;
+    padding: 5px;
+    font-size: 18px;
+    color: #fff;
+    font-weight: 200;
+    /*background-color: white;*/
+
+    background: -webkit-gradient(linear, left top, left bottom, from(#6bb2ff), to(#2399fb));
+
+    -webkit-box-shadow: 8px 8px 8px #666;
+    border-bottom-left-radius: 7px;
+    border-bottom-right-radius: 7px;
+}
+
+.plus-span {
+    /*border-radius: 5px;*/
+    /*width: 10px;*/
+    /*background-color: #333;*/
 }
