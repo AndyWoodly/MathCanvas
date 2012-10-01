@@ -10,9 +10,20 @@
     <link rel="stylesheet" href="main.css"/>
     <script type="text/javascript" src="app.js"></script>
 
+    <script type="text/javascript">
+        function init() {
+            MathCanvas.initCanvas("canvas_div", "canvas");
+            MathCanvas.initOverlay("flap", "overlay", "295px");
+
+            document.getElementById('canvas').onmousedown = function() {
+                console.log("DOWN");
+            }
+        }
+    </script>
+
 </head>
 
-<body onload='MathCanvas.init("canvas_div", "canvas", "flap", 100)'>
+<body onload='init()'>
 <!--<body>-->
 
 <div id="main" class="layer">
@@ -22,19 +33,44 @@
 </div>
 <div id="overlay" class="layer">
     <div id="controls_panel">
-        <select id="sequence_select" name="sequence">
-            <option>eins</option>
-            <option>zwei</option>
-            <option>drei</option>
-            <option>vier</option>
-            <option>fuenf</option>
-        </select>
-        <!--<div id="dropdown">dropdown</div>-->
-        <!--<div id="new">new</div>-->
-        <input id="new_button" type="button" value="New"/>
+        <form action="#" method="post">
+            <fieldset>
+                <div class="field">
+                    <label for="sequence">Sequence</label>
+                    <select id="sequence" name="sequence">
+                        <option>sin(sqrt(n))</option>
+                        <option>pow(log(n),4)</option>
+                        <option>pow(n,2)/1234;</option>
+                    </select>
+                </div>
+
+                <div class="field">
+                    <label for="editor">Editor</label>
+                    <textarea id="editor" placeholder="sin(sqrt(n))"></textarea>
+                </div>
+
+                <div class="field">
+                    <label for="scaling">Scale</label>
+                    <input type="range" id="scaling"/>
+                </div>
+
+                <div class="field">
+                    <label for="iterations">Iterations</label>
+                    <input type="range" id="iterations"/>
+                </div>
+
+                <div class="field">
+                    <label for="buttons">&nbsp;</label>
+                    <div id="buttons">
+                        <input id="apply" type="submit" value="Apply" />
+                        <input id="new" type="submit" value="New" />
+                    </div>
+                </div>
+            </fieldset>
+        </form>
     </div>
     <div id="flap_panel">
-        <div id="flap">options</div>
+        <div id="flap">Options</div>
     </div>
 </div>
 

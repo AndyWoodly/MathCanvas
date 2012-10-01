@@ -1,18 +1,35 @@
 var MathCanvas = (function () {
 
-    var init = function(containerId, canvasId, flapId, controlsHeight) {
-        _initCanvas(containerId, canvasId);
-        _initOverlay(flapId, controlsHeight);
+    var _sequence = {
+        scaling: 3,
+        iterations: 3000,
+        seq: function(n) {
+            //return Math.pow(Math.log(n),4)
+            //return Math.pow(n,2)/1234;
+            return Math.sin(Math.sqrt(n));
+        }
     };
 
-    var _initOverlay = function(flapId, height) {
+    var _setScaling = function(scaling) {
+        _sequence.scaling = scaling;
+    };
+
+    var _setIterations = function(iterations) {
+        _sequence.iterations = iterations;
+    };
+
+    var _setSequence = function(sequence) {
+        _sequence = sequence;
+    };
+
+
+    var _initOverlay = function(flapId, overlayId, height) {
         var flapDiv = document.getElementById(flapId);
         var collapsed = false;
         flapDiv.onclick = function() {
-            var controls = document.getElementById('overlay');
-            controls.style.top = collapsed ? "0px" : "-100px";
+            var controls = document.getElementById(overlayId);
+            controls.style.top = collapsed ? "0px" : "-"+height;
             collapsed = !collapsed;
-            console.log(collapsed, controls.style.top);
         };
     };
 
@@ -34,8 +51,6 @@ var MathCanvas = (function () {
         var centerY = canvas.height / 2;
         var prevX = -1;
         var prevY = -1;
-        var scaleFactor = 3;
-        var nrOfIterations = 3000;
 
         var dragok = false;
 
@@ -50,7 +65,7 @@ var MathCanvas = (function () {
                 centerX += x - prevX;
                 centerY += y - prevY;
                 clear();
-                _draw(ctx, centerX, centerY, scaleFactor, nrOfIterations);
+                _draw(ctx, centerX, centerY, _sequence.scaling, _sequence.iterations);
                 prevY = y;
                 prevX = x;
             }
@@ -72,13 +87,7 @@ var MathCanvas = (function () {
         canvas.onmousedown = myDown;
         canvas.onmouseup = myUp;
 
-        _draw(ctx, centerX, centerY, scaleFactor, nrOfIterations);
-    };
-
-    var _sequence = function(n) {
-        //return Math.pow(Math.log(n),4)
-        //return Math.pow(n,2)/1234;
-        return Math.sin(Math.sqrt(n));
+        _draw(ctx, centerX, centerY, _sequence.scaling, _sequence.iterations);
     };
 
     var _draw = function (ctx, cx, cy, sf, N) {
@@ -88,8 +97,8 @@ var MathCanvas = (function () {
         var y1;
         var xn;
         for (var i = 0; i < N; i++) {
-            xn = _sequence(i);
-            //console.log(xn);
+            xn = _sequence.seq(i);
+//            console.log(xn);
             var xIn = 2 * Math.PI * xn;
             //console.log(xIn);
             x1 = x + sf * Math.cos(xIn);
@@ -106,13 +115,14 @@ var MathCanvas = (function () {
         }
     };
 
-    var setSequence = function(sequence) {
-        this._sequence = sequence;
-    };
+    // public
 
     return {
-        init: init,
-        setSequence: setSequence
+        initCanvas: _initCanvas,
+        initOverlay: _initOverlay,
+        setSequence: _setSequence,
+        setScale: _setScaling,
+        setIterations: _setIterations
     }
 
 }());

@@ -1,6 +1,6 @@
 * {
-    font-family: Arial,serif;
-    font-size: 22px;
+    font-family: sans-serif;
+    font-size: 14px;
 }
 
 html, body, .layer {
@@ -34,48 +34,34 @@ html, body, .layer {
     -webkit-box-shadow: 4px 4px 4px #666;
 }
 
-#canvas {
-}
-
 /* controls overlay */
 
 #overlay {
     z-index: 1;
-    top: -100px;
+    top: -295px;
     -webkit-transition: top 0.5s ease-in;
 
-    margin-left: 1%;
-    margin-right: 1%;
-    width: 98%;
+    margin-left: 10px;
+    width: 360px;
 
     display: -webkit-box;
     -webkit-box-orient: vertical;
 }
 
 #controls_panel {
-    height: 100px;
+    height: 265px;
+    padding: 15px;
+
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+
     /*border: solid #cdcdcd 1px;*/
-    background-color: white;
     -webkit-box-shadow: 8px 8px 8px #666;
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
 
-    background: -webkit-gradient(linear, left bottom, left top, from(#6bb2ff), to(rgba(202, 231, 255, 0.99)));
-
-}
-
-#new_button {
-    height: 20px;
-    -webkit-box-pack: right;
-    -webkit-box-align: right;
-}
-
-#sequence_select {
-    height: 20px;
-
-    -webkit-box-flex: 1;
-    -webkit-box-pack: center;
-    -webkit-box-align: stretch;
+    /*background: -webkit-gradient(linear, left bottom, left top, from(#6bb2ff), to(rgba(202, 231, 255, 0.99)));*/
+    background: -webkit-gradient(linear, left bottom, left top, from(#eee), to(#ddd));
 }
 
 #flap_panel {
@@ -84,22 +70,99 @@ html, body, .layer {
 }
 
 #flap {
-    margin-left: 85%;
-    padding: 5px;
+    margin-left: 7%;
+    /*padding: 5px;*/
+    padding: 5px 5px;
+
+    color: #f2f2f2;
+    text-shadow: 0px -1px 0px #38506b;
     font-size: 18px;
-    color: #fff;
-    font-weight: 200;
+
+    cursor: pointer;
     /*background-color: white;*/
 
-    background: -webkit-gradient(linear, left top, left bottom, from(#6bb2ff), to(#2399fb));
+    /*background: -webkit-gradient(linear, left top, left bottom, from(#6bb2ff), to(#2399fb));*/
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#718DA9), color-stop(100%,#415D79));
 
     -webkit-box-shadow: 8px 8px 8px #666;
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
 }
 
-.plus-span {
-    /*border-radius: 5px;*/
-    /*width: 10px;*/
-    /*background-color: #333;*/
+/* form */
+
+.field  {
+    clear: both;
+    margin: 0;
+    padding: 5px 0;
+}
+
+label {
+    float: left;
+    clear: left;
+    margin: 0 15px 0 0;
+    width: 80px;
+    text-align: right;
+    font-size: 14px;
+    color: #445668;
+    text-transform: uppercase;
+    text-shadow: 0px 1px 0px #f2f2f2;
+}
+
+input {
+    width: 150px;
+    /*height: 35px;*/
+    padding: 5px 20px 0px 10px;
+    margin: 0 0 10px 0;
+    background: #5E768D;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#546A7F), color-stop(20%,#5E768D)); /* webkit */
+    border-radius: 5px;
+    -webkit-border-radius: 5px;
+    -webkit-box-shadow: 0px 1px 0px #f2f2f2;
+    font-size: 16px;
+    color: #f2f2f2;
+    text-shadow: 0px -1px 0px #334f71;
+}
+input::-webkit-input-placeholder  {
+    color: #a1b2c3;
+    text-shadow: 0px -1px 0px #38506b;
+}
+
+.select {
+    height: 30px;
+    padding: 5px;
+    margin: 0;
+    font-size: 16px;
+    /*-webkit-border-radius: 4px;*/
+}
+
+textarea {
+    width: 160px; height: 60px;
+    padding: 5px 8px 5px 8px;
+    margin: 0 0 10px 0;
+    background: #5E768D;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#546A7F), color-stop(20%,#5E768D)); /* webkit */
+    -webkit-border-radius: 5px;
+    font-size: 16px;
+    color: #f2f2f2;
+    text-shadow: 0px -1px 0px #334f71;
+}
+textarea::-webkit-input-placeholder  {
+    color: #a1b2c3;
+    text-shadow: 0px -1px 0px #38506b;
+}
+
+input:focus, textarea:focus {
+    background: #728eaa;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#668099), color-stop(20%,#728eaa)); /* webkit */
+}
+
+input[type=submit] {
+    width: 80px;
+    height: 30px;
+    padding: 5px 5px;
+    margin: 0 15px 0 0;
+    border: 1px solid #556f8c;
+    background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#718DA9), color-stop(100%,#415D79)); /* webkit */
+    cursor: pointer;
 }
