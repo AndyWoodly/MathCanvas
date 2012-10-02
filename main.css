@@ -50,7 +50,10 @@ html, body, .layer {
 
 #controls_panel {
     height: 265px;
-    padding: 15px;
+    padding-top: 15px;
+    padding-right: 15px;
+    padding-left: 35px;
+    padding-bottom: 15px;
 
     display: -webkit-box;
     -webkit-box-orient: vertical;

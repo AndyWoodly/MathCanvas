@@ -34,39 +34,37 @@
 <div id="overlay" class="layer">
     <div id="controls_panel">
         <form action="#" method="post">
-            <fieldset>
-                <div class="field">
-                    <label for="sequence">Sequence</label>
-                    <select id="sequence" name="sequence">
-                        <option>sin(sqrt(n))</option>
-                        <option>pow(log(n),4)</option>
-                        <option>pow(n,2)/1234;</option>
-                    </select>
-                </div>
+            <div class="field">
+                <label for="sequence">Sequence</label>
+                <select id="sequence" name="sequence">
+                    <option>sin(sqrt(n))</option>
+                    <option>pow(log(n),4)</option>
+                    <option>pow(n,2)/1234;</option>
+                </select>
+            </div>
 
-                <div class="field">
-                    <label for="editor">Editor</label>
-                    <textarea id="editor" placeholder="sin(sqrt(n))"></textarea>
-                </div>
+            <div class="field">
+                <label for="editor">Editor</label>
+                <textarea id="editor" placeholder="sin(sqrt(n))"></textarea>
+            </div>
 
-                <div class="field">
-                    <label for="scaling">Scale</label>
-                    <input type="range" id="scaling"/>
-                </div>
+            <div class="field">
+                <label for="scaling">Scale</label>
+                <input type="range" id="scaling"/>
+            </div>
 
-                <div class="field">
-                    <label for="iterations">Iterations</label>
-                    <input type="range" id="iterations"/>
-                </div>
+            <div class="field">
+                <label for="iterations">Iterations</label>
+                <input type="range" id="iterations"/>
+            </div>
 
-                <div class="field">
-                    <label for="buttons">&nbsp;</label>
-                    <div id="buttons">
-                        <input id="apply" type="submit" value="Apply" />
-                        <input id="new" type="submit" value="New" />
-                    </div>
+            <div class="field">
+                <label for="buttons">&nbsp;</label>
+                <div id="buttons">
+                    <input id="apply" type="submit" value="Apply" />
+                    <input id="new" type="submit" value="New" />
                 </div>
-            </fieldset>
+            </div>
         </form>
     </div>
     <div id="flap_panel">
