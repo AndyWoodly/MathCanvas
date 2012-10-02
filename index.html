@@ -13,11 +13,7 @@
     <script type="text/javascript">
         function init() {
             MathCanvas.initCanvas("canvas_div", "canvas");
-            MathCanvas.initOverlay("flap", "overlay", "295px");
-
-            document.getElementById('canvas').onmousedown = function() {
-                console.log("DOWN");
-            }
+            MathCanvas.initControls("flap", "overlay");
         }
     </script>
 
@@ -50,12 +46,12 @@
 
             <div class="field">
                 <label for="scaling">Scale</label>
-                <input type="range" id="scaling"/>
+                <input type="range" min="0.5" max="15.5" value="3" id="scaling"/>
             </div>
 
             <div class="field">
                 <label for="iterations">Iterations</label>
-                <input type="range" id="iterations"/>
+                <input type="range" min="10" max="10000" value="3000" id="iterations"/>
             </div>
 
             <div class="field">

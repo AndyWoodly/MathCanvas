@@ -38,17 +38,22 @@ html, body, .layer {
 
 #overlay {
     z-index: 1;
-    top: -295px;
-    -webkit-transition: top 0.5s ease-in;
 
+    top: -295px;
     margin-left: 10px;
     width: 360px;
+    height: 330px;
+
+    -webkit-transition: top 0.5s ease-in;
 
     display: -webkit-box;
     -webkit-box-orient: vertical;
 }
 
 #controls_panel {
+
+    overflow: hidden;
+
     height: 265px;
     padding-top: 15px;
     padding-right: 15px;
@@ -58,12 +63,10 @@ html, body, .layer {
     display: -webkit-box;
     -webkit-box-orient: vertical;
 
-    /*border: solid #cdcdcd 1px;*/
     -webkit-box-shadow: 8px 8px 8px #666;
     border-bottom-left-radius: 7px;
     border-bottom-right-radius: 7px;
 
-    /*background: -webkit-gradient(linear, left bottom, left top, from(#6bb2ff), to(rgba(202, 231, 255, 0.99)));*/
     background: -webkit-gradient(linear, left bottom, left top, from(#eee), to(#ddd));
 }
 
@@ -74,7 +77,6 @@ html, body, .layer {
 
 #flap {
     margin-left: 7%;
-    /*padding: 5px;*/
     padding: 5px 5px;
 
     color: #f2f2f2;
@@ -82,9 +84,7 @@ html, body, .layer {
     font-size: 18px;
 
     cursor: pointer;
-    /*background-color: white;*/
 
-    /*background: -webkit-gradient(linear, left top, left bottom, from(#6bb2ff), to(#2399fb));*/
     background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#718DA9), color-stop(100%,#415D79));
 
     -webkit-box-shadow: 8px 8px 8px #666;
@@ -114,7 +114,6 @@ label {
 
 input {
     width: 150px;
-    /*height: 35px;*/
     padding: 5px 20px 0px 10px;
     margin: 0 0 10px 0;
     background: #5E768D;
@@ -136,7 +135,6 @@ input::-webkit-input-placeholder  {
     padding: 5px;
     margin: 0;
     font-size: 16px;
-    /*-webkit-border-radius: 4px;*/
 }
 
 textarea {
