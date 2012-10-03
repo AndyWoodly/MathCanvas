@@ -14,7 +14,21 @@
         function init() {
             MathCanvas.initCanvas("canvas_div", "canvas");
             MathCanvas.initControls("flap", "overlay");
+
+            document.getElementById('run').onclick = submitClicked;
         }
+        function submitClicked() {
+            var select = document.getElementById('editor');
+            var _seq = function(n) {
+                return eval(select.value);
+            };
+            MathCanvas.setSequence({
+                scaling: 3,
+                iterations: 1000,
+                seq: _seq
+            });
+        }
+        function doNothing() {}
     </script>
 
 </head>
@@ -29,19 +43,14 @@
 </div>
 <div id="overlay" class="layer">
     <div id="controls_panel">
-        <form action="#" method="post">
+        <form action="javascript:doNothing()">
             <div class="field">
                 <label for="sequence">Sequence</label>
                 <select id="sequence" name="sequence">
-                    <option>sin(sqrt(n))</option>
-                    <option>pow(log(n),4)</option>
-                    <option>pow(n,2)/1234;</option>
+                    <option>Math.sin(Math.sqrt(n))</option>
+                    <option>Math.pow(Math.log(n),4)</option>
+                    <option>Math.pow(n,2)/1234;</option>
                 </select>
-            </div>
-
-            <div class="field">
-                <label for="editor">Editor</label>
-                <textarea id="editor" placeholder="sin(sqrt(n))"></textarea>
             </div>
 
             <div class="field">
@@ -55,10 +64,15 @@
             </div>
 
             <div class="field">
+                <label for="editor">Editor</label>
+                <textarea id="editor" placeholder="Math.sin(Math.sqrt(n))"></textarea>
+            </div>
+
+            <div class="field">
                 <label for="buttons">&nbsp;</label>
                 <div id="buttons">
-                    <input id="apply" type="submit" value="Apply" />
-                    <input id="new" type="submit" value="New" />
+                    <input type="submit" id="run" value="Run"/>
+                    <!--<input type="submit" id="save" value="Save"/>-->
                 </div>
             </div>
         </form>
