@@ -113,31 +113,35 @@ var MathCanvas = (function () {
             _repaint();
         };
 
+        var _setSnippet = function(snippet) {
+            _setSequence({
+                scaling: _sequence.scaling,
+                iterations: _sequence.iterations,
+                seq: function(n) { return eval(snippet); }
+            });
+        };
+
+
         return {
             init: _init,
             setSequence: _setSequence,
+            setSnippet: _setSnippet,
             setScaling: _setScaling,
-            setIterations: _setIterations
+            setIterations: _setIterations,
+            getSequence: function() { return _sequence; }
         };
 
     }());
 
     var _sequences = [
-        {
-            scaling: 3,
-            iterations: 3000,
-            seq: function(n) { return Math.sin(Math.sqrt(n)); }
-        },
-        {
-            scaling: 3,
-            iterations: 3000,
-            seq: function(n) { return Math.pow(Math.log(n),4); }
-        },
-        {
-            scaling: 3,
-            iterations: 3000,
-            seq: function(n) { return Math.pow(n,2)/1234; }
-        }
+        "Math.sin(Math.sqrt(n))",
+        "(n*n*n)/1002",
+        "(n*n*n)/1013",
+        "Math.pow(n,7)/1050",
+        "Math.pow(n,2)/1234;",
+        "-0.00339372*n*n",
+        "-0.306828*n*n",
+        "1000*Math.pow(n,0.666666)"
     ];
 
     var _initControls = function(flapId, overlayId) {
@@ -151,8 +155,11 @@ var MathCanvas = (function () {
         };
 
         var select = document.getElementById('sequence');
+        _sequences.forEach(function(seq) {
+            select.options[select.options.length] = new Option(seq, seq);
+        });
         select.onchange = function() {
-            Canvas.setSequence(_sequences[select.selectedIndex]);
+            Canvas.setSnippet(select.value);
         };
 
         var scale = document.getElementById('scaling');
@@ -175,8 +182,6 @@ var MathCanvas = (function () {
                 scaling: 3,
                 iterations: 3000,
                 seq: function(n) {
-                    //return Math.pow(Math.log(n),4)
-                    //return Math.pow(n,2)/1234;
                     return Math.sin(Math.sqrt(n));
                 }
             });
@@ -192,6 +197,10 @@ var MathCanvas = (function () {
 
         setSequence: function(sequence) {
             Canvas.setSequence(sequence);
+        },
+
+        setSnippet: function(snippet) {
+            Canvas.setSnippet(snippet);
         }
 
     }

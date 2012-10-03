@@ -19,14 +19,7 @@
         }
         function submitClicked() {
             var select = document.getElementById('editor');
-            var _seq = function(n) {
-                return eval(select.value);
-            };
-            MathCanvas.setSequence({
-                scaling: 3,
-                iterations: 1000,
-                seq: _seq
-            });
+            MathCanvas.setSnippet(select.value);
         }
         function doNothing() {}
     </script>
@@ -34,7 +27,6 @@
 </head>
 
 <body onload='init()'>
-<!--<body>-->
 
 <div id="main" class="layer">
     <div id="canvas_div">
@@ -46,16 +38,7 @@
         <form action="javascript:doNothing()">
             <div class="field">
                 <label for="sequence">Sequence</label>
-                <select id="sequence" name="sequence">
-                    <option>Math.sin(Math.sqrt(n))</option>
-                    <option>(n*n*n)/1002</option>
-                    <option>(n*n*n)/1013</option>
-                    <option>Math.pow(n,7)/1050</option>
-                    <option>Math.pow(n,2)/1234;</option>
-                    <option>-0.00339372*n*n</option>
-                    <option>-0.306828*n*n</option>
-                    <option>1000*Math.pow(n,0.666666)</option>
-                </select>
+                <select id="sequence" name="sequence"></select>
             </div>
 
             <div class="field">
