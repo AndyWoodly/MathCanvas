@@ -34,6 +34,29 @@ html, body, .layer {
     -webkit-box-shadow: 4px 4px 4px #666;
 }
 
+/* info overlay */
+
+#info {
+    height: 0;
+    display: -webkit-box;
+    -webkit-box-orient: horizontal;
+}
+
+#info_content {
+    padding-top: 10px;
+    padding-right: 20px;
+
+    -webkit-box-flex: 1;
+    text-align: right;
+}
+
+#info_content a {
+    color: #445668;
+    font-style: normal;
+    text-decoration: none;
+    text-shadow: 0px 1px 0px #f2f2f2;
+}
+
 /* controls overlay */
 
 #overlay {
